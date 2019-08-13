@@ -13,8 +13,8 @@
   "author": "Marlon Haensdieke",
   "license": "UNLICENSED",
   "peerDependencies": {
-    "codelyzer": "~4.5.0",
-    "tslint": "~5.11.0"
+    "codelyzer": "^5.0.0",
+    "tslint": "~5.15.0"
   },
   "dependencies": {
     "prettier": "^1.15.3",
