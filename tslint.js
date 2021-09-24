@@ -1,7 +1,11 @@
 const path = require('path');
 
 module.exports = {
-    extends: ['tslint-config-prettier'],
+    extends: [
+        'tslint-angular',
+        'rxjs-tslint-rules',
+        'tslint-config-prettier',
+    ],
     rulesDirectory: [
         path.join(path.dirname(require.resolve('codelyzer')), './'),
         path.join(path.dirname(require.resolve('tslint-plugin-prettier')), './'),
@@ -15,94 +19,52 @@ module.exports = {
                 'trailingComma': 'es5'
             }
         ],
-        'arrow-return-shorthand': true,
-        'callable-types': true,
-        'class-name': true,
-        'comment-format': [
+
+        // add/override tslint rules
+        'one-variable-per-declaration': [
             true,
-            'check-space'
+            'ignore-for-loop'
         ],
-        'curly': true,
-        'deprecation': {
-            'severity': 'warn'
-        },
-        'forin': true,
-        'import-blacklist': [
-            true,
-            'rxjs/Rx'
-        ],
-        'interface-over-type-literal': true,
-        'label-position': true,
-        'member-access': [true, 'check-accessor'],
-        'member-ordering': [
-            true,
-            {
-                'order': [
-                    'static-field',
-                    'instance-field',
-                    'static-method',
-                    'instance-method'
-                ]
-            }
-        ],
-        'no-arg': true,
-        'no-bitwise': true,
-        'no-console': [
-            true,
-            'debug',
-            'info',
-            'time',
-            'timeEnd',
-            'trace'
-        ],
-        'no-construct': true,
-        'no-debugger': true,
-        'no-duplicate-super': true,
-        'no-empty': false,
-        'no-empty-interface': true,
-        'no-eval': true,
+        'max-classes-per-file': false,
+        'forin': false,
+
+        // override tslint-angular rules
         'no-inferrable-types': [
             true,
             'ignore-params',
             'ignore-properties'
         ],
-        'no-misused-new': true,
-        'no-non-null-assertion': true,
-        'no-redundant-jsdoc': true,
-        'no-shadowed-variable': true,
-        'no-string-literal': false,
-        'no-string-throw': true,
-        'no-switch-case-fall-through': true,
-        'no-unnecessary-initializer': true,
-        'no-unused-expression': true,
-        'no-use-before-declare': true,
-        'no-var-keyword': true,
-        'object-literal-sort-keys': false,
-        'prefer-const': true,
-        'radix': true,
-        'triple-equals': [
-            true,
-            'allow-null-check'
-        ],
-        'typedef': [
-            true,
-            'call-signature',
-            'parameter',
-            'arrow-parameter',
-            'member-variable-declaration'
-        ],
-        'unified-signatures': true,
-        'variable-name': false,
-        'no-output-on-prefix': true,
-        'no-inputs-metadata-property': true,
-        'no-outputs-metadata-property': true,
-        'no-host-metadata-property': true,
-        'no-input-rename': true,
-        'no-output-rename': true,
-        'use-life-cycle-interface': true,
-        'use-pipe-transform-interface': true,
-        'component-class-suffix': true,
-        'directive-class-suffix': true,
-        'ordered-imports': true
+
+        // enable rxjs-tslint-rules
+        'rxjs-finnish': {
+            options: [{
+                functions: false,
+                methods: false,
+                parameters: true,
+                properties: true,
+                variables: true
+            }],
+            severity: 'warning'
+        },
+        'rxjs-no-exposed-subjects': { severity: 'warning' },
+        'rxjs-no-subject-unsubscribe': { severity: 'warning' },
+        'rxjs-no-unsafe-takeuntil': true,
+        'rxjs-prefer-angular-takeuntil': { severity: 'warning' },
+        'rxjs-no-compat': true,
+        'rxjs-no-create': true,
+        'rxjs-no-index': true,
+        'rxjs-no-internal': true,
+        'rxjs-no-nested-subscribe': true,
+        'rxjs-no-operator': true,
+        'rxjs-no-patched': true,
+        'rxjs-no-subclass': true,
+        'rxjs-no-unbound-methods': true,
+        'rxjs-no-add': true,
+        'rxjs-no-async-subscribe': true,
+        'rxjs-no-deep-operators': true,
+        'rxjs-no-ignored-error': { severity: 'warning' },
+        'rxjs-no-ignored-observable': true,
+        'rxjs-no-ignored-replay-buffer': true,
+        'rxjs-prefer-angular-async-pipe': { severity: 'warning' }
     }
 };
