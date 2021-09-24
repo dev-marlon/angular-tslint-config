@@ -2,6 +2,7 @@
   "name": "angular-tslint-config",
   "description": "TSLint config for Angular TypeScript style",
   "main": "tslint.js",
+  "version": "2.0.1",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
